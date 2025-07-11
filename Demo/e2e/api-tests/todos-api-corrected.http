@@ -1,0 +1,48 @@
+### Todo API Tests - CORRECTED VERSION
+### Base URL: https://localhost:7001/api
+
+### Variables
+@baseUrl = https://localhost:7001/api
+@todoId = {{createTodo.response.body.id}}
+@completedTodoId = {{createCompletedTodo.response.body.id}}
+
+### Health Check - Verify API is running
+GET {{baseUrl}}/todos
+Accept: application/json
+
+###
+
+### 1. CREATE TODO TESTS
+
+### Create a simple todo
+# @name createTodo
+POST {{baseUrl}}/todos
+Content-Type: application/json
+
+{
+  "title": "Complete API Testing",
+  "description": "Write comprehensive API tests for the todo application",
+  "priority": "high",
+  "dueDate": "2025-01-15T00:00:00Z"
+}
+
+### Create todo with minimal data (only title)
+# @name createMinimalTodo
+POST {{baseUrl}}/todos
+Content-Type: application/json
+
+{
+  "title": "Minimal Todo"
+}
+
+### Create todo with all fields
+# @name createFullTodo
+POST {{baseUrl}}/todos
+Content-Type: application/json
+
+{
+  "title": "Full Featured Todo",
+  "description": "This todo has all possible fields filled out for comprehensive testing",
+  "priority": "medium",
+  "dueDate": "2025-02-01T00:00:00Z"
+}
